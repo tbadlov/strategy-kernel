@@ -1,0 +1,8 @@
+{
+  "name": "resume-strategist",
+  "description": "Executive resume strategist for CTO roles at Series C/D and IPO-track companies. Interactive interview workflow that extracts business-outcome-driven achievements and produces tailored resumes.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Zvika"
+  }
+}

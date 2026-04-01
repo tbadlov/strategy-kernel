@@ -14,6 +14,14 @@
       "version": "0.1.0",
       "keywords": ["strategy", "rumelt", "diagnosis", "business"],
       "category": "productivity"
+    },
+    {
+      "name": "resume-strategist",
+      "source": "./resume-strategist/",
+      "description": "Executive resume strategist for CTO roles at Series C/D and IPO-track companies. 7-step interactive interview workflow that extracts business-outcome-driven achievements and produces tailored resumes.",
+      "version": "0.1.0",
+      "keywords": ["resume", "CTO", "executive", "interview", "career"],
+      "category": "productivity"
     }
   ]
 }
