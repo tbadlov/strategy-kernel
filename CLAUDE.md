@@ -13,6 +13,6 @@ Claude Code plugin marketplace containing strategic tools for business and produ
 
 | Directory | What | When to read |
 |-----------|------|--------------|
-| `.claude-plugin/` | Marketplace and strategy-kernel plugin manifests | Modifying marketplace metadata, adding a new plugin to the registry, updating version numbers |
-| `skills/` | Strategy-kernel skill (Rumelt framework) | Working on the strategy-kernel plugin, modifying the 8-step workflow |
-| `resume-strategist/` | Resume-strategist plugin (CTO resume interview) | Working on the resume-strategist plugin, modifying the 7-step workflow |
+| `.claude-plugin/` | Marketplace manifest | Modifying marketplace metadata, adding a new plugin to the registry |
+| `strategy-kernel/` | Strategy-kernel plugin (Rumelt framework, 8-step workflow) | Working on the strategy-kernel plugin |
+| `resume-strategist/` | Resume-strategist plugin (CTO resume interview, 7-step workflow) | Working on the resume-strategist plugin |

@@ -88,16 +88,18 @@ Executive resume strategist targeting CTO roles at Series C/D and IPO-track comp
 
 ```
 .claude-plugin/
-  marketplace.json        # Marketplace manifest listing both plugins
-  plugin.json             # strategy-kernel plugin manifest
-skills/
-  strategize/
-    strategize.py         # 8-step workflow orchestrator
-    SKILL.md              # Skill trigger and invocation spec
-    references/           # Framework reference files (4 documents)
+  marketplace.json          # Marketplace manifest listing both plugins
+strategy-kernel/
+  .claude-plugin/
+    plugin.json             # strategy-kernel plugin manifest
+  skills/
+    strategize/
+      strategize.py         # 8-step workflow orchestrator
+      SKILL.md              # Skill trigger and invocation spec
+      references/           # Framework reference files (4 documents)
 resume-strategist/
   .claude-plugin/
-    plugin.json           # resume-strategist plugin manifest
+    plugin.json             # resume-strategist plugin manifest
   skills/
     resume-strategist/
       resume_strategist.py  # 7-step workflow orchestrator
