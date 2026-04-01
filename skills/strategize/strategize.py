@@ -527,16 +527,14 @@ CREATE_DESTROY_INSTRUCTIONS = (
     "\n"
     "If NEEDS REVISION: Work with the user to fix the weaknesses, then re-run\n"
     "this step to re-test. Command to re-run:\n"
-    "  python3 {script} --step 7\n"
+    "  python3 strategize.py --step 7\n"
     "\n"
     "If FUNDAMENTALLY FLAWED: Return to the step that needs rework:\n"
-    "  Diagnosis broken?  -> python3 {script} --step 2\n"
-    "  Policy broken?     -> python3 {script} --step 4\n"
-    "  Actions broken?    -> python3 {script} --step 5\n"
+    "  Diagnosis broken?  -> python3 strategize.py --step 2\n"
+    "  Policy broken?     -> python3 strategize.py --step 4\n"
+    "  Actions broken?    -> python3 strategize.py --step 5\n"
     "\n"
-    "If ROBUST: Proceed to artifact generation.".format(
-        script=SKILL_DIR / "strategize.py"
-    )
+    "If ROBUST: Proceed to artifact generation."
 )
 
 # --- STEP 8: ARTIFACT -------------------------------------------------------
@@ -677,7 +675,7 @@ def format_output(step: int) -> str:
     instructions = STEP_INSTRUCTIONS[step]
 
     if step < TOTAL_STEPS:
-        next_cmd = f"python3 {SKILL_DIR / 'strategize.py'} --step {step + 1}"
+        next_cmd = f"python3 strategize.py --step {step + 1}"
     else:
         next_cmd = ""
 

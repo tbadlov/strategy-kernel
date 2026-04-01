@@ -1,15 +1,6 @@
 ---
 name: resume-strategist
-description: >
-  This skill should be used when the user asks to "update my resume",
-  "tailor my resume", "prepare resume for a role", "help me with my CV",
-  "optimize my resume", "write my resume for [company]",
-  "interview me for resume content", "extract my achievements",
-  or mentions resume strategy, CTO resume, executive resume, or
-  applying for a CTO/VP Engineering/technical executive role.
-  Provides a 7-step interactive interview workflow that extracts
-  business-outcome-driven achievements and produces tailored resumes
-  for Series C/D and IPO-track companies.
+description: This skill should be used when the user asks to "update my resume", "tailor my resume", "prepare resume for a role", "help me with my CV", "optimize my resume", "write my resume for [company]", "interview me for resume content", "extract my achievements", or mentions resume strategy, CTO resume, executive resume, or applying for a CTO/VP Engineering/technical executive role. Provides a 7-step interactive interview workflow that extracts business-outcome-driven achievements and produces tailored resumes for Series C/D and IPO-track companies.
 argument-hint: "[describe the target role or paste a job description]"
 version: 0.1.0
 ---
