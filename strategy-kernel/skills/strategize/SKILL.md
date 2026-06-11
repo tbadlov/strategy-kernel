@@ -1,8 +1,8 @@
 ---
 name: strategize
-description: This skill should be used when the user asks to "develop a strategy", "create a strategy document", "critique my strategy", "apply Rumelt's framework", "diagnose our strategic challenge", "build a strategy kernel", or mentions Good Strategy Bad Strategy, Rumelt, strategy diagnosis, guiding policy, or coherent actions. Provides an 8-step interactive workflow grounded in Richard Rumelt's kernel framework for business and product strategy.
+description: This skill should be used when the user asks to "develop a strategy", "create a strategy document", "critique my strategy", "apply Rumelt's framework", "diagnose our strategic challenge", "build a strategy kernel", or mentions Good Strategy Bad Strategy, Rumelt, strategy diagnosis, guiding policy, or coherent actions.
 argument-hint: "[describe your strategic challenge or context]"
-version: 0.1.0
+version: 0.2.0
 ---
 
 # Strategy Kernel
@@ -13,10 +13,10 @@ Interactive strategic thought partner grounded in Richard Rumelt's *Good Strateg
 
 When this skill activates, IMMEDIATELY invoke the script. The script IS the workflow.
 
-Run from the skill directory:
+Run from the user's project directory — do NOT `cd` into the skill directory (the final artifact in Step 8 saves to the working directory, which must be the user's, not the skill's):
 
 ```bash
-cd ${CLAUDE_SKILL_DIR} && python3 strategize.py --step 1
+python3 "${CLAUDE_SKILL_DIR}/strategize.py" --step 1
 ```
 
 | Argument | Required | Description        |

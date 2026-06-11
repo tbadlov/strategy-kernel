@@ -11,7 +11,7 @@
       "name": "strategy-kernel",
       "source": "./strategy-kernel/",
       "description": "Strategic thought partner using Richard Rumelt's Good Strategy Bad Strategy kernel framework. 8-step interactive workflow for developing rigorous strategy documents.",
-      "version": "0.1.0",
+      "version": "0.2.0",
       "keywords": ["strategy", "rumelt", "diagnosis", "business"],
       "category": "productivity"
     },
