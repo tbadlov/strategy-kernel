@@ -1,7 +1,7 @@
 {
   "name": "strategy-kernel",
   "description": "Strategic thought partner using Richard Rumelt's Good Strategy Bad Strategy kernel framework. Helps develop strategy documents through Socratic probing, bad strategy detection, and structured artifact generation.",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "author": {
     "name": "Zvika"
   }

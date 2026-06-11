@@ -1,8 +1,8 @@
 ---
 name: strategize
-description: This skill should be used when the user asks to "develop a strategy", "create a strategy document", "critique my strategy", "apply Rumelt's framework", "diagnose our strategic challenge", "build a strategy kernel", or mentions Good Strategy Bad Strategy, Rumelt, strategy diagnosis, guiding policy, or coherent actions.
+description: This skill should be used when the user asks to "develop a strategy", "create a strategy document", "develop a product strategy", "develop a technology strategy", "critique my strategy", "apply Rumelt's framework", "diagnose our strategic challenge", "build a strategy kernel", or mentions Good Strategy Bad Strategy, Rumelt, strategy diagnosis, guiding policy, or coherent actions. Applies to business, product, and technology/platform strategy alike.
 argument-hint: "[describe your strategic challenge or context]"
-version: 0.2.0
+version: 0.2.1
 ---
 
 # Strategy Kernel
