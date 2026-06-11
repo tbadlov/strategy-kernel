@@ -1,8 +1,8 @@
 ---
 name: resume-strategist
-description: This skill should be used when the user asks to "update my resume", "tailor my resume", "prepare resume for a role", "help me with my CV", "optimize my resume", "write my resume for [company]", "interview me for resume content", "extract my achievements", or mentions resume strategy, CTO resume, executive resume, or applying for a CTO/VP Engineering/technical executive role. Provides a 7-step interactive interview workflow that extracts business-outcome-driven achievements and produces tailored resumes for Series C/D and IPO-track companies.
+description: This skill should be used when the user asks to "update my resume", "tailor my resume", "prepare resume for a role", "help me with my CV", "optimize my resume", "write my resume for [company]", "interview me for resume content", "extract my achievements", or mentions resume strategy, CTO resume, executive resume, or applying for a CTO/VP Engineering/technical executive role.
 argument-hint: "[describe the target role or paste a job description]"
-version: 0.1.0
+version: 0.2.0
 ---
 
 # Executive CTO Resume Strategist
@@ -15,10 +15,10 @@ Socratic interviewing, then produces a tailored resume using the CAR framework.
 
 When this skill activates, IMMEDIATELY invoke the script. The script IS the workflow.
 
-Run from the skill directory:
+Run from the user's project directory — do NOT `cd` into the skill directory (the final artifact in Step 7 saves to the working directory, which must be the user's, not the skill's):
 
 ```bash
-cd ${CLAUDE_SKILL_DIR} && python3 resume_strategist.py --step 1
+python3 "${CLAUDE_SKILL_DIR}/resume_strategist.py" --step 1
 ```
 
 | Argument | Required | Description        |

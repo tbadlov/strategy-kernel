@@ -24,6 +24,7 @@ from pathlib import Path
 
 SKILL_DIR = Path(__file__).resolve().parent
 REFS_DIR = SKILL_DIR / "references"
+SCRIPT_CMD = f'python3 "{SKILL_DIR / "resume_strategist.py"}"'
 
 
 # ============================================================================
@@ -33,7 +34,9 @@ REFS_DIR = SKILL_DIR / "references"
 LOAD_REFERENCE = (
     "LOAD REFERENCE: Read the file {path} now using the Read tool.\n"
     "This contains detailed framework knowledge needed for this step.\n"
-    "Do NOT proceed until you have read it."
+    "If you already read this file earlier in this conversation, do not\n"
+    "re-read it — use what is in context. Otherwise do NOT proceed until\n"
+    "you have read it."
 )
 
 INTERVIEWER_MINDSET = (
@@ -65,7 +68,12 @@ INTERVIEWER_MINDSET = (
     "- Listen carefully to responses — follow up on specifics before moving on\n"
     "- Push for numbers. If the user says 'significant,' ask 'how significant?'\n"
     "- When the user can't quantify, use estimation proxies (see CAR framework)\n"
-    "- Note the INTEGRITY CONSTRAINT: never help fabricate unverifiable numbers\n"
+    "- Note the INTEGRITY CONSTRAINT: never help fabricate unverifiable numbers.\n"
+    "  This cuts both ways: if the USER proposes overstating or claiming\n"
+    "  experience they lack ('can we just say I led X?'), push back directly,\n"
+    "  explain the verification risk, and offer an honest reframing of what\n"
+    "  they actually did. Adjacent experience is framed as adjacent, never\n"
+    "  as the thing itself.\n"
 )
 
 
@@ -438,6 +446,10 @@ BULLET_CRAFTING_INSTRUCTIONS = (
     "   Iterate based on feedback. Do NOT finalize bullets the user cannot\n"
     "   confidently defend.\n"
     "\n"
+    "   If the user proposes inflating a bullet or claiming experience they\n"
+    "   lack, refuse and offer an honest reframing (integrity constraint —\n"
+    "   every claim must survive a reference check or background verification).\n"
+    "\n"
     "E. EXECUTIVE SUMMARY:\n"
     "   Draft a 3-4 line positioning statement that:\n"
     "   - Establishes executive identity (CTO + functions led)\n"
@@ -475,8 +487,10 @@ ARTIFACT_INSTRUCTIONS = (
     "\n"
     "DOCUMENT STRUCTURE:\n"
     "\n"
-    "Write the resume in this format and save it in the current working directory\n"
-    "as a markdown file (e.g., `resume-[target-company].md`):\n"
+    "Write the resume in this format. Save it in the USER'S project directory\n"
+    "(where the conversation is running) — NEVER inside the skill directory.\n"
+    "Suggest the filename `resume-[target-company].md` and confirm it with\n"
+    "the user.\n"
     "\n"
     "```markdown\n"
     "# [Full Name]\n"
@@ -487,7 +501,13 @@ ARTIFACT_INSTRUCTIONS = (
     "[3-4 line positioning statement from Step 6]\n"
     "\n"
     "## Key Achievements\n"
-    "[6-8 top CAR bullets — the strongest, most relevant achievements]\n"
+    "[5-6 one-line distilled highlights — the most JD-relevant signals.\n"
+    " NO-DUPLICATION RULE: each achievement appears ONCE in the resume.\n"
+    " A highlight here must NOT reappear as a role bullet below (and vice\n"
+    " versa). On a strict 2-page format, near-verbatim repetition burns\n"
+    " half a page and reads as poor prioritization. If the role section\n"
+    " needs the achievement for narrative continuity, keep it there and\n"
+    " cut it from highlights.]\n"
     "\n"
     "## Professional Experience\n"
     "\n"
@@ -495,6 +515,15 @@ ARTIFACT_INSTRUCTIONS = (
     "*[Start Date] – [End Date]*\n"
     "\n"
     "[Brief company context: what the company does, stage, scale]\n"
+    "\n"
+    "[For a role with many achievements, STRONGLY PREFER grouping bullets\n"
+    " under thematic subheads that mirror the TARGET role's stated\n"
+    " priorities — e.g., 'Platform & Reliability', 'Infrastructure Unit\n"
+    " Economics', 'Security & Compliance', 'Data & ML', 'Organization',\n"
+    " 'Board & Corporate Development'. A resume whose structure mirrors\n"
+    " the JD forwards itself: the reader's 10-second scan lands every\n"
+    " signal without doing the mapping themselves. For short roles, a\n"
+    " flat 4-6 bullet list is fine.]\n"
     "\n"
     "- [CAR bullet 1]\n"
     "- [CAR bullet 2]\n"
@@ -524,6 +553,17 @@ ARTIFACT_INSTRUCTIONS = (
     "- No pronouns (standard resume convention: omit 'I', 'my')\n"
     "- Company context line helps the reader calibrate scale even if the\n"
     "  company name isn't well-known\n"
+    "\n"
+    "STAGE CALIBRATION CHECK (before presenting to the user):\n"
+    "Verify against stage-calibration.md's framing emphasis for the TARGET\n"
+    "stage:\n"
+    "- Does the document use the target stage's vocabulary? (e.g., for\n"
+    "  Series D/pre-IPO: operational maturity, unit economics, governance,\n"
+    "  audit-ready, predictable execution — not startup scrappiness)\n"
+    "- Does the section structure map to the target's stated priorities?\n"
+    "- The failure test: if this resume would read identically for a\n"
+    "  company two stages earlier, calibration has failed — revise before\n"
+    "  presenting.\n"
     "\n"
     "FINAL REVIEW WITH USER:\n"
     "After generating the resume, ask:\n"
@@ -576,9 +616,11 @@ def format_step(body: str, next_cmd: str = "", title: str = "") -> str:
     if next_cmd:
         invoke = (
             f"\n\nNEXT STEP:\n"
-            f"    Working directory: {SKILL_DIR}\n"
             f"    Command: {next_cmd}\n\n"
-            f"Execute this command now."
+            f"Run this command ONLY after you have completed this step's\n"
+            f"interaction with the user and they have explicitly agreed to\n"
+            f"move on. Producing the output format is not completing the\n"
+            f"step — the user's confirmation is."
         )
         return f"{body}{invoke}"
     else:
@@ -599,7 +641,7 @@ def format_output(step: int) -> str:
     instructions = STEP_INSTRUCTIONS[step]
 
     if step < TOTAL_STEPS:
-        next_cmd = f"python3 resume_strategist.py --step {step + 1}"
+        next_cmd = f"{SCRIPT_CMD} --step {step + 1}"
     else:
         next_cmd = ""
 
